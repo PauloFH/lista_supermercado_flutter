@@ -1,16 +1,38 @@
-# mercadinho_help
+# Lista de compras
 
-A new Flutter project.
+Esse app surgiu de uma necessidade pessoal de um app para gerenciar minhas compras de supermercado olhando valores e poder editar e remover. Fiz um app simples e pretendo posteiormente deixar mais organizado e melhorar o design
 
-## Getting Started
+## Funcionalidades
 
-This project is a starting point for a Flutter application.
+- **Calculadora Integrada:** Realize operações básicas de matemática diretamente no aplicativo.
+- **Planilha de Produtos:** Mantenha uma lista de produtos com nome do produto, quantidade, preço unitário e total.
 
-A few resources to get you started if this is your first Flutter project:
+## Instalação
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+1. Clone o repositório:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+   ```
+   git clone https://github.com/seu-usuario/feira-app.git
+   ```
+
+2. Entre no diretório do projeto:
+
+   ```
+   cd feira-app
+   ```
+
+3. Instale as dependências:
+
+   ```
+   flutter pub get
+   ```
+
+4. Execute o aplicativo:
+
+   ```
+   flutter run
+   ```
+
+## Contribuição
+
+Contribuições são bem-vindas! Sinta-se à vontade para enviar pull requests ou relatar problemas.
