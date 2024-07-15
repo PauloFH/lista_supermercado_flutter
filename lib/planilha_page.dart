@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Produto {
@@ -40,6 +41,8 @@ class PlanilhaPage extends StatefulWidget {
 }
 
 class _PlanilhaPageState extends State<PlanilhaPage> {
+
+
   List<Produto> produtos = [];
   TextEditingController nomeController = TextEditingController();
   TextEditingController quantidadeController = TextEditingController();
@@ -49,7 +52,12 @@ class _PlanilhaPageState extends State<PlanilhaPage> {
   @override
   void initState() {
     super.initState();
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
     _loadProdutos();
+
   }
 
   Future<void> _loadProdutos() async {

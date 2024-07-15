@@ -1,0 +1,6 @@
+image: assets/logo.png
+color: "#000000"  # cor de fundo do splash screen, se necessário
+android:
+  splash: true
+ios:
+  splash: true
