@@ -11,22 +11,22 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Mercadinho',
+      title: 'Mercado',
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        scaffoldBackgroundColor: Colors.black, // Cor de fundo geral do aplicativo
+        scaffoldBackgroundColor: Colors.black,
         appBarTheme: const AppBarTheme(
-          backgroundColor: Colors.black, // Cor de fundo da barra superior
-          centerTitle: true, // Centraliza o título na barra superior
-          titleTextStyle: TextStyle(color: Colors.white), // Cor do texto do título na barra superior
+          backgroundColor: Colors.black,
+          centerTitle: true,
+          titleTextStyle: TextStyle(color: Colors.white),
         ),
         bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-          backgroundColor: Colors.black, // Cor de fundo da barra de navegação inferior
-          selectedItemColor: Colors.purple, // Cor do ícone e do texto selecionado
-          unselectedItemColor: Colors.white, // Cor do ícone e do texto não selecionado
+          backgroundColor: Colors.black,
+          selectedItemColor: Colors.purple,
+          unselectedItemColor: Colors.white,
         ),
         textTheme: const TextTheme(
-          titleLarge: TextStyle(color: Colors.white), // Cor do título (usado no AppBar)
+          titleLarge: TextStyle(color: Colors.white),
         ),
       ),
       home: HomePage(),
@@ -70,14 +70,14 @@ class HomePageState extends State<HomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Image.asset(
-              'assets/logo.png', // Substitua pelo caminho da sua imagem
+              'assets/logo.png',
               fit: BoxFit.contain,
-              height: 32, // Altura da imagem
+              height: 32,
             ),
             Container(
               padding: const EdgeInsets.all(8.0),
               child: const Text(
-                'Mercadinho',
+                'Mercado',
                 style: TextStyle(
                   fontSize: 20.0,
                 ),

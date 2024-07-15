@@ -69,11 +69,11 @@ class _CalculadoraPageState extends State<CalculadoraPage> {
   Widget _buildButton(String buttonText) {
     return Expanded(
       child: Container(
-        margin: const EdgeInsets.all(6.0),  // Aumenta o espaçamento entre os botões
+        margin: const EdgeInsets.all(6.0),
         child: OutlinedButton(
           style: OutlinedButton.styleFrom(
-            padding: const EdgeInsets.all(10.0),  // Aumenta o tamanho dos botões
-            backgroundColor: Colors.black38,  // Cor de fundo dos botões
+            padding: const EdgeInsets.all(10.0),
+            backgroundColor: Colors.black38,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12.0),
             ),
@@ -91,7 +91,7 @@ class _CalculadoraPageState extends State<CalculadoraPage> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 50.0),  // Sobe a calculadora
+      padding: const EdgeInsets.only(top: 50.0),
       child:  Column(
         children: <Widget>[
           Container(
