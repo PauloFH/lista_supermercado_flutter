@@ -74,9 +74,9 @@ class _PlanilhaPageState extends State<PlanilhaPage> {
     setState(() {
       produtos.add(Produto(
         nome: nomeController.text,
-        quantidade: double.parse(quantidadeController.text),
-        precoUnitario: double.parse(precoUnitarioController.text),
-        precoTotal: double.parse(precoUnitarioController.text) * double.parse(quantidadeController.text),
+        quantidade: double.tryParse(quantidadeController.text) ?? 0.0,
+        precoUnitario: double.tryParse(precoUnitarioController.text) ?? 0.0,
+        precoTotal: (double.tryParse(precoUnitarioController.text) ?? 0.0) * (double.tryParse(quantidadeController.text) ?? 0.0),
       ));
       _calcularTotalFeira();
       _limparCampos();
@@ -115,92 +115,80 @@ class _PlanilhaPageState extends State<PlanilhaPage> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData.dark().copyWith(
-        scaffoldBackgroundColor: Colors.black,
-        textTheme: TextTheme(
-          bodyLarge: TextStyle(color: Colors.white),
-          bodyMedium: TextStyle(color: Colors.white),
-        ),
-        inputDecorationTheme: InputDecorationTheme(
-          labelStyle: TextStyle(color: Colors.white),
-          hintStyle: TextStyle(color: Colors.white70),
+    return Scaffold(
+      appBar: AppBar(
+        title: Center(
+          child: Text(
+            'Total da Feira: R\$ ${totalFeira.toStringAsFixed(2)}',
+            style: const TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold, color: Colors.white),
+          ),
         ),
       ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: Center(child: Text(
-            'Total da Feira: R\$ ${totalFeira.toStringAsFixed(2)}',
-            style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold, color: Colors.white),
-          ),),
-        ),
-        body: Column(
-          children: [
-            Expanded(
-              child: ListView.separated(
-                itemCount: produtos.length,
-                itemBuilder: (context, index) {
-                  return ListTile(
-                    title: Text(produtos[index].nome, style: TextStyle(color: Colors.white)),
-                    subtitle: Text(
-                      'Qtd: ${produtos[index].quantidade} \n Preço Total: R\$ ${produtos[index].precoTotal.toStringAsFixed(2)} \n Preço Unitário: R\$ ${produtos[index].precoUnitario.toStringAsFixed(2)}',
-                      style: TextStyle(color: Colors.white70),
-                    ),
-                    trailing: IconButton(
-                      icon: Icon(Icons.delete, color: Colors.red),
-                      onPressed: () => _removerProduto(index),
-                    ),
-                    onTap: () => _editarProduto(index),
-                  );
-                },
-                separatorBuilder: (context, index) => Divider(color: Colors.white24),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      Expanded(
-                        child: TextField(
-                          controller: nomeController,
-                          decoration: InputDecoration(labelText: 'Produto'),
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ),
-                      SizedBox(width: 10),
-                      Expanded(
-                        child: TextField(
-                          controller: quantidadeController,
-                          decoration: InputDecoration(labelText: 'Quantidade'),
-                          keyboardType: TextInputType.number,
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ),
-                      SizedBox(width: 10),
-                      Expanded(
-                        child: TextField(
-                          controller: precoUnitarioController,
-                          decoration: InputDecoration(labelText: 'Preço Unitário'),
-                          keyboardType: TextInputType.number,
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ),
-                    ],
+      body: Column(
+        children: [
+          Expanded(
+            child: ListView.separated(
+              itemCount: produtos.length,
+              itemBuilder: (context, index) {
+                return ListTile(
+                  title: Text(produtos[index].nome, style: const TextStyle(color: Colors.white)),
+                  subtitle: Text(
+                    'Qtd: ${produtos[index].quantidade} \n Preço Total: R\$ ${produtos[index].precoTotal.toStringAsFixed(2)} \n Preço Unitário: R\$ ${produtos[index].precoUnitario.toStringAsFixed(2)}',
+                    style: const TextStyle(color: Colors.white70),
                   ),
-                  const SizedBox(height: 20),
-                  ElevatedButton(
-                    onPressed: _adicionarProduto,
-                    child: const Text('Adicionar/Atualizar'),
+                  trailing: IconButton(
+                    icon: const Icon(Icons.delete, color: Colors.red),
+                    onPressed: () => _removerProduto(index),
                   ),
-                  const SizedBox(height: 20),
-
-                ],
-              ),
+                  onTap: () => _editarProduto(index),
+                );
+              },
+              separatorBuilder: (context, index) => const Divider(color: Colors.white24),
             ),
-          ],
-        ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    Expanded(
+                      child: TextField(
+                        controller: nomeController,
+                        decoration: const InputDecoration(labelText: 'Produto'),
+                        style: const TextStyle(color: Colors.white),
+                      ),
+                    ),
+                    const SizedBox(width: 10),
+                    Expanded(
+                      child: TextField(
+                        controller: quantidadeController,
+                        decoration: const InputDecoration(labelText: 'Quantidade'),
+                        keyboardType: TextInputType.number,
+                        style: const TextStyle(color: Colors.white),
+                      ),
+                    ),
+                    const SizedBox(width: 10),
+                    Expanded(
+                      child: TextField(
+                        controller: precoUnitarioController,
+                        decoration: const InputDecoration(labelText: 'Preço Unitário'),
+                        keyboardType: TextInputType.number,
+                        style: const TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 20),
+                ElevatedButton(
+                  onPressed: _adicionarProduto,
+                  child: const Text('Adicionar/Atualizar'),
+                ),
+                const SizedBox(height: 20),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
