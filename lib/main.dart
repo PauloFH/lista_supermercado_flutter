@@ -2,13 +2,16 @@ import 'package:flutter/material.dart';
 import 'calculadora_page.dart';
 import 'planilha_page.dart';
 
+void main() {
+  runApp(const MyApp());
+}
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Feira App',
+      title: 'Mercadinho',
       theme: ThemeData(
         primarySwatch: Colors.blue,
         scaffoldBackgroundColor: Colors.black, // Cor de fundo geral do aplicativo
@@ -19,10 +22,10 @@ class MyApp extends StatelessWidget {
         ),
         bottomNavigationBarTheme: const BottomNavigationBarThemeData(
           backgroundColor: Colors.black, // Cor de fundo da barra de navegação inferior
-          selectedItemColor: Colors.blue, // Cor do ícone e do texto selecionado
+          selectedItemColor: Colors.purple, // Cor do ícone e do texto selecionado
           unselectedItemColor: Colors.white, // Cor do ícone e do texto não selecionado
         ),
-        textTheme:  const TextTheme(
+        textTheme: const TextTheme(
           titleLarge: TextStyle(color: Colors.white), // Cor do título (usado no AppBar)
         ),
       ),
@@ -31,13 +34,14 @@ class MyApp extends StatelessWidget {
   }
 }
 
-
 class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
   @override
-  _HomePageState createState() => _HomePageState();
+  HomePageState createState() => HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class HomePageState extends State<HomePage> {
   int _currentIndex = 0;
   final List<Widget> _children = [
     CalculadoraPage(),
@@ -64,8 +68,8 @@ class _HomePageState extends State<HomePage> {
             ),
             Container(
               padding: const EdgeInsets.all(8.0),
-              child: Text(
-                'Feira App',
+              child: const Text(
+                'Mercadinho',
                 style: TextStyle(
                   fontSize: 20.0,
                 ),
@@ -78,7 +82,7 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar: BottomNavigationBar(
         onTap: onTabTapped,
         currentIndex: _currentIndex,
-        items: [
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.calculate),
             label: 'Calculadora',
