@@ -8,8 +8,8 @@ Esse app surgiu de uma necessidade pessoal de um app para gerenciar minhas compr
 - **Planilha de Produtos:** Mantenha uma lista de produtos com nome do produto, quantidade, preço unitário e total.
 ## Capturas de tela
 
-   -![tela da calculadora](D:\projects\flutter\mercadinho_help\assets\calc_screen.png)
-   -![lista de compras](D:\projects\flutter\mercadinho_help\assets\list_screen.png)
+   -![tela da calculadora](assets/calc_screen.png)
+   -![lista de compras](assets/list_screen.png)
 ## Instalação
 
 1. Clone o repositório:
